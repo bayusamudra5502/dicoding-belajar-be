@@ -1,3 +1,6 @@
-import hapi from "@hapi/hapi"
+import Hapi from "@hapi/hapi"
 
-console.log("Halo, Dunia")
+const server = Hapi.server({
+  port: 5000
+})
+
