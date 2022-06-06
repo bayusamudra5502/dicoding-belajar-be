@@ -1,5 +1,8 @@
 {
   "compilerOptions": {
-    "preserveSymlinks": true
+    "module": "esnext",
+    "target": "es2017",
+    "moduleResolution": "node",
+    "outDir": "dist",
   }
 }
