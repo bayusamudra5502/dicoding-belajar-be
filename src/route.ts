@@ -11,4 +11,24 @@ export default function RouteRegister(server: Hapi.Server) {
     }
   })
   
+  server.route({
+    path: "/about",
+    method:"*",
+    handler: (req, res) => {
+      return {
+        "message": "About Page"
+      }
+    }
+  })
+
+  server.route({
+    path: "/{any*}",
+    method: "*",
+    handler: (req, res)=> {
+      return {
+        "status": "KO",
+        "message": "Not Found"
+      }
+    } 
+   })
 }
