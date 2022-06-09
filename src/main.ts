@@ -4,7 +4,12 @@ import RouteRegister from "./route";
 async function server(){
   const server = Hapi.server({
     host: "localhost",
-    port: 5000
+    port: 5000,
+    routes: {
+      cors: {
+        origin: ["https://bayusamudra.my.id"]
+      }
+    }
   })
   
   RouteRegister(server)

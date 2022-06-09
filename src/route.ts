@@ -58,13 +58,42 @@ export default function RouteRegister(server: Hapi.Server) {
   })
 
   server.route({
+    path: "/token",
+    method: "POST",
+    options: {
+      cors: {
+        origin: ["*"] // Ini ke semuanya
+      }
+    },
+    handler: (req, res) => {
+      interface payload {
+        token: string
+      }
+
+      const {token} = req.payload as payload;
+
+      if(token === "12345"){
+        return res.response({
+          status: "OK",
+          message: "Valid token"
+        }).code(201);
+      }
+
+      return res.response({
+        status: "KO",
+        message: "Wrong token"
+      }).code(400)
+    }
+  })
+
+  server.route({
     path: "/{a*}", // Bebas penandanya
     method: "*",
     handler: (req, res)=> {
-      return {
+      return res.response({
         "status": "KO",
         "message": "Not Found"
-      }
+      }).code(404);
     } 
    })
 }
